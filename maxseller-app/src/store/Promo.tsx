@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
-import { ArrowRight, Check, Play, RotateCcw, Sparkles, Volume2, VolumeX, X } from 'lucide-react'
+import { ArrowRight, Check, Download, Film, Play, RotateCcw, Sparkles, Volume2, VolumeX, X } from 'lucide-react'
 import { useI18n, type I18nKey } from '../shared/i18n'
 import { go } from './router'
 
@@ -96,6 +96,7 @@ function createSfx(): Sfx | null {
 export default function Promo() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(false)
   const [scene, setScene] = useState(0)
   const [finished, setFinished] = useState(false)
   const [muted, setMuted] = useState(false)
@@ -126,19 +127,22 @@ export default function Promo() {
   }, [advance, finished, open, scene])
 
   useEffect(() => {
-    if (!open) return
+    if (!open && !videoOpen) return
     const previous = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
-      if (event.key === 'ArrowRight' && !finished) advance()
+      if (event.key === 'Escape') {
+        setOpen(false)
+        setVideoOpen(false)
+      }
+      if (event.key === 'ArrowRight' && open && !finished) advance()
     }
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = previous
       window.removeEventListener('keydown', onKey)
     }
-  }, [advance, finished, open])
+  }, [advance, finished, open, videoOpen])
 
   const play = () => {
     if (!sfxRef.current) sfxRef.current = createSfx()
@@ -186,6 +190,12 @@ export default function Promo() {
               <span className="promo-play-icon"><Play size={18} fill="currentColor" /></span>
               {t('promo.play')}
             </button>
+            <button className="promo-file" type="button" onClick={() => setVideoOpen(true)}>
+              <Film size={17} /> {t('promo.watchVideo')}
+            </button>
+            <a className="promo-file promo-file-download" href="/reklama/maxseller-promo.mp4" download="maxseller-promo.mp4">
+              <Download size={17} /> {t('promo.download')}
+            </a>
             <span className="promo-meta"><i /> {t('promo.meta')}</span>
           </div>
           <div className="promo-badges">
@@ -260,12 +270,43 @@ export default function Promo() {
               {finished ? (
                 <div className="promo-final-actions">
                   <button type="button" className="btn btn-ghost" onClick={replay}><RotateCcw size={16} /> {t('promo.replay')}</button>
+                  <a className="btn btn-ghost" href="/reklama/maxseller-promo.mp4" download="maxseller-promo.mp4"><Download size={16} /> {t('promo.download')}</a>
                   <button type="button" className="btn" onClick={toCatalog}>{t('promo.cta')} <ArrowRight size={16} /></button>
                 </div>
               ) : (
                 <button type="button" className="promo-skip" onClick={advance}>{t('promo.skip')} <ArrowRight size={15} /></button>
               )}
             </div>
+          </footer>
+        </div>
+      )}
+
+      {videoOpen && (
+        <div className="promo-overlay promo-video-overlay" role="dialog" aria-modal="true" aria-label={t('promo.watchVideo')}>
+          <div className="promo-overlay-bg" aria-hidden="true" />
+          <header className="promo-topbar">
+            <span className="promo-brand"><img src="/favicon.svg" alt="" width={26} height={26} /> Max<b>Seller</b></span>
+            <span className="promo-live"><i /> {t('promo.meta')}</span>
+            <div className="promo-tools">
+              <button type="button" onClick={() => setVideoOpen(false)} aria-label={t('promo.close')} title={t('promo.close')}>
+                <X size={20} />
+              </button>
+            </div>
+          </header>
+          <div className="promo-video-wrap">
+            <video
+              src="/reklama/maxseller-promo.mp4"
+              poster="/reklama/maxseller-promo-poster.jpg"
+              controls autoPlay playsInline preload="metadata"
+            />
+          </div>
+          <footer className="promo-bottom promo-video-bottom">
+            <a className="btn" href="/reklama/maxseller-promo.mp4" download="maxseller-promo.mp4">
+              <Download size={16} /> {t('promo.download')}
+            </a>
+            <button type="button" className="promo-skip" onClick={() => { setVideoOpen(false); play() }}>
+              <Sparkles size={15} /> {t('promo.play')}
+            </button>
           </footer>
         </div>
       )}
