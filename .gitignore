@@ -13,3 +13,5 @@ platform/storage/
 platform/docs/backup/
 **/*.db
 **/*.sqlite
+
+.vercel
