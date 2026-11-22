@@ -7,7 +7,7 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "npm --prefix maxseller-app install --no-audit --no-fund && npm --prefix maxseller-app run build"
+    "build": "node scripts/vercel-build.mjs"
   },
   "dependencies": {
     "serverless-http": "^3.2.0"
