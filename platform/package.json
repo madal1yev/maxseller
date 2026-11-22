@@ -1,0 +1,46 @@
+{
+  "name": "maxseller-platform",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,STORE,ADMIN -c green,cyan,magenta \"npm:dev:api\" \"npm:dev:store\" \"npm:dev:admin\"",
+    "dev:api": "npm run dev -w @maxseller/api",
+    "dev:store": "npm run dev -w @maxseller/storefront",
+    "dev:admin": "npm run dev -w @maxseller/admin",
+    "build": "npm run build -w @maxseller/api && npm run build -w @maxseller/storefront && npm run build -w @maxseller/admin",
+    "test": "npm run test -w @maxseller/api",
+    "db:generate": "prisma generate --schema prisma/schema.prisma",
+    "db:migrate": "prisma migrate deploy --schema prisma/schema.prisma",
+    "db:push": "prisma db push --schema prisma/schema.prisma",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio --schema prisma/schema.prisma",
+    "db:test-server": "node scripts/pglite-server.mjs",
+    "db:setup-local": "prisma migrate deploy --schema prisma/schema.prisma && npm run db:seed",
+    "db:reset": "prisma migrate reset --schema prisma/schema.prisma --force"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@electric-sql/pglite-socket": "^0.2.19",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.23.1",
+    "concurrently": "^9.1.2",
+    "pg": "^8.23.1",
+    "prisma": "^6.19.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "prisma@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "@prisma/client@6.19.3": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true
+  }
+}

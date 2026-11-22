@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: maxseller-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-maxseller}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-maxseller}
+      POSTGRES_DB: ${POSTGRES_DB:-maxseller}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-maxseller} -d ${POSTGRES_DB:-maxseller}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: maxseller-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-maxseller}:${POSTGRES_PASSWORD:-maxseller}@postgres:5432/${POSTGRES_DB:-maxseller}?schema=public
+      PORT: 4000
+      NODE_ENV: production
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET ni .env faylida belgilang}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@maxseller.uz}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD ni .env faylida belgilang}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3001}
+      STORAGE_DRIVER: local
+      STORAGE_DIR: /app/storage
+      MAX_RECEIPT_MB: ${MAX_RECEIPT_MB:-5}
+      MAX_PRODUCT_FILE_MB: ${MAX_PRODUCT_FILE_MB:-200}
+      SMS_PROVIDER: ${SMS_PROVIDER:-none}
+      SMS_API_URL: ${SMS_API_URL:-}
+      SMS_API_KEY: ${SMS_API_KEY:-}
+      SMS_FROM: ${SMS_FROM:-}
+      ADMIN_PHONE: ${ADMIN_PHONE:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_ADMIN_CHAT_ID: ${TELEGRAM_ADMIN_CHAT_ID:-}
+    ports:
+      - "4000:4000"
+    volumes:
+      - storage:/app/storage
+    command: sh -c "npm run db:migrate && npm run db:seed && npm run start -w @maxseller/api"
+
+  storefront:
+    build:
+      context: .
+      dockerfile: apps/storefront/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://api:4000/api
+    container_name: maxseller-storefront
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://api:4000/api
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      NEXT_PUBLIC_TELEGRAM_CHANNEL: maxseller_uz
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://api:4000/api
+    container_name: maxseller-admin
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3001:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://api:4000/api
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3001}
+      NEXT_PUBLIC_TELEGRAM_CHANNEL: maxseller_uz
+
+volumes:
+  pgdata:
+  storage:

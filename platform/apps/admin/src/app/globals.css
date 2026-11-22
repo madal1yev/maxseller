@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #030805;
+  --surface: #07130c;
+  --surface-2: #0b1a12;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(0, 230, 118, 0.22);
+  --accent: #00e676;
+  --muted: #8ba397;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  color: #eaf7f0;
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Unbounded', 'Manrope', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(0, 230, 118, 0.28);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07130c;
+}
+::-webkit-scrollbar-thumb {
+  background: #163323;
+  border-radius: 999px;
+  border: 2px solid #07130c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4a32;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-white/[0.07] bg-ink-900/80 shadow-panel;
+  }
+
+  .panel-glass {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.035] backdrop-blur-xl;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-300 hover:border-brand-500/25 hover:shadow-glow;
+  }
+
+  .muted {
+    @apply text-[#8ba397];
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-r from-white via-brand-100 to-brand-400 bg-clip-text text-transparent;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-ink-950/70 px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-[#60776b] focus:border-brand-500/50 focus:ring-2 focus:ring-brand-500/15 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .label-text {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#8ba397];
+  }
+
+  .chart-grid {
+    stroke: rgba(255, 255, 255, 0.07);
+    stroke-width: 1;
+  }
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0.85) sepia(0.2) saturate(4) hue-rotate(80deg);
+}
+
+textarea {
+  resize: vertical;
+}

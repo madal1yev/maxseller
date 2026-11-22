@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vercel/
+*.log
+.env
+.env.*
+!.env.example
+server/data/db.json
+server/storage/
+server/data/*.tmp

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.vercel/
+*.log
+.env
+.env.*
+!.env.example
+maxseller-app/server/data/db.json
+maxseller-app/server/data/*.tmp
+maxseller-app/server/storage/
+platform/.pglite/
+platform/storage/
+platform/docs/backup/
+**/*.db
+**/*.sqlite

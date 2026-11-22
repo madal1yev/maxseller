@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --bg: 3 8 5; /* #030805 */
+  --surface: 7 19 12; /* #07130C */
+  --card: 11 26 18; /* #0b1a12 */
+  --muted: 148 166 154;
+  --foreground: 238 247 241;
+  --line: 255 255 255;
+  color-scheme: dark;
+}
+
+.light {
+  --bg: 244 248 245;
+  --surface: 255 255 255;
+  --card: 255 255 255;
+  --muted: 82 102 90;
+  --foreground: 10 28 17;
+  --line: 8 40 20;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--line) / 0.1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-foreground font-sans antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% -10%, rgba(0, 230, 118, 0.09), transparent 70%),
+      radial-gradient(ellipse 40% 30% at 100% 20%, rgba(0, 168, 84, 0.05), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    background: rgba(0, 230, 118, 0.3);
+    color: #fff;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.035] backdrop-blur-xl;
+  }
+
+  .light .glass {
+    @apply border-emerald/20 bg-white/80;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-white/10 bg-card/80 shadow-card;
+  }
+
+  .light .panel {
+    @apply border-emerald/15 bg-white shadow-sm;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald via-emerald to-emerald-dark bg-clip-text text-transparent;
+  }
+
+  .btn-glow {
+    @apply shadow-glow transition-shadow duration-300 hover:shadow-glow-lg;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-bg/70 px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted/70 focus:border-emerald/70 focus:ring-2 focus:ring-emerald/20;
+  }
+
+  .light .field {
+    @apply border-emerald/20 bg-white placeholder:text-muted/60;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .account-item {
+    @apply flex cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none;
+  }
+
+  .account-item[data-highlighted] {
+    @apply bg-emerald/10 text-emerald;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030805;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00a854, #00E676);
+  border: 2px solid #030805;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00E676;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #eef4f0;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  border-color: #eef4f0;
+}

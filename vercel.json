@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm --prefix maxseller-app install --no-audit --no-fund && npm --prefix maxseller-app run build",
+  "outputDirectory": "maxseller-app/dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" }
+  ]
+}
