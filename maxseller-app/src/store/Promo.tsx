@@ -97,6 +97,7 @@ export default function Promo() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const [videoOpen, setVideoOpen] = useState(false)
+  const [vertical, setVertical] = useState(false)
   const [scene, setScene] = useState(0)
   const [finished, setFinished] = useState(false)
   const [muted, setMuted] = useState(false)
@@ -190,8 +191,11 @@ export default function Promo() {
               <span className="promo-play-icon"><Play size={18} fill="currentColor" /></span>
               {t('promo.play')}
             </button>
-            <button className="promo-file" type="button" onClick={() => setVideoOpen(true)}>
+            <button className="promo-file" type="button" onClick={() => { setVertical(false); setVideoOpen(true) }}>
               <Film size={17} /> {t('promo.watchVideo')}
+            </button>
+            <button className="promo-file" type="button" onClick={() => { setVertical(true); setVideoOpen(true) }}>
+              <Play size={17} /> {t('promo.watchVertical')}
             </button>
             <a className="promo-file promo-file-download" href="/reklama/maxseller-promo.mp4" download="maxseller-promo.mp4">
               <Download size={17} /> {t('promo.download')}
@@ -295,13 +299,14 @@ export default function Promo() {
           </header>
           <div className="promo-video-wrap">
             <video
-              src="/reklama/maxseller-promo.mp4"
-              poster="/reklama/maxseller-promo-poster.jpg"
+              className={vertical ? 'is-vertical' : undefined}
+              src={vertical ? '/reklama/maxseller-commercial-9x16.mp4' : '/reklama/maxseller-promo.mp4'}
+              poster={vertical ? '/reklama/maxseller-commercial-poster.jpg' : '/reklama/maxseller-promo-poster.jpg'}
               controls autoPlay playsInline preload="metadata"
             />
           </div>
           <footer className="promo-bottom promo-video-bottom">
-            <a className="btn" href="/reklama/maxseller-promo.mp4" download="maxseller-promo.mp4">
+            <a className="btn" href={vertical ? '/reklama/maxseller-commercial-9x16.mp4' : '/reklama/maxseller-promo.mp4'} download={vertical ? 'maxseller-commercial-9x16.mp4' : 'maxseller-promo.mp4'}>
               <Download size={16} /> {t('promo.download')}
             </a>
             <button type="button" className="promo-skip" onClick={() => { setVideoOpen(false); play() }}>

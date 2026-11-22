@@ -392,6 +392,7 @@ const entries = [
   ['promo.text', 'Saytlar, dizayn, hujjatlar va kurslar. Reklamani tomosha qilib, nega MaxSeller ekanligini bilib oling.', 'Сайты, дизайн, документы и курсы. Посмотрите ролик и узнайте, почему MaxSeller.', 'Websites, design, documents and courses. Watch the reel and see why MaxSeller stands out.'],
   ['promo.play', 'Reklamani ko‘rish', 'Смотреть ролик', 'Watch the ad'],
   ['promo.watchVideo', 'MP4 ni ko‘rish', 'Смотреть MP4', 'Watch MP4'],
+  ['promo.watchVertical', '9:16 reklama', 'Вертикальная реклама', 'Vertical ad'],
   ['promo.download', 'MP4 ni yuklash', 'Скачать MP4', 'Download MP4'],
   ['promo.meta', '45 sekund · animatsiya · ovoz effektlari', '45 секунд · анимация · звук', '45 seconds · animation · sound effects'],
   ['promo.badge1', '12 ta mahsulot', '12 товаров', '12 products'],
