@@ -1,25 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Telegram bot yaratish">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Telegram bot">
+
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#050f0a"/><stop offset="1" stop-color="#0b3540"/>
+      <stop offset="0" stop-color="#04120c"/><stop offset="1" stop-color="#0a3a26"/>
     </linearGradient>
     <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#22e05a"/>
+      <stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#5ef2a0"/>
     </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity=".02"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="34"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+    </filter>
   </defs>
   <rect width="800" height="500" fill="url(#bg)"/>
-  <circle cx="680" cy="90" r="190" fill="#22d3ee" opacity="0.10"/>
-  <circle cx="120" cy="440" r="150" fill="#22e05a" opacity="0.06"/>
-  <path d="M0 400 Q 200 330 400 400 T 800 390" fill="none" stroke="#22d3ee" stroke-width="2" opacity="0.25"/>
-  <g transform="translate(56 52)">
-    <rect width="82" height="34" rx="16" fill="#22d3ee" opacity="0.18" stroke="#22d3ee" stroke-opacity="0.5"/>
-    <text x="41" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">BOT</text>
+  <circle cx="690" cy="70" r="220" fill="#86efac" opacity=".16" filter="url(#blur)"/>
+  <circle cx="120" cy="470" r="180" fill="#22e05a" opacity=".08" filter="url(#blur)"/>
+  <g stroke="#7dffb2" stroke-opacity=".07" stroke-width="1">
+    <line x1="0" y1="40" x2="800" y2="40"/><line x1="0" y1="82" x2="800" y2="82"/><line x1="0" y1="124" x2="800" y2="124"/><line x1="0" y1="166" x2="800" y2="166"/><line x1="0" y1="208" x2="800" y2="208"/><line x1="0" y1="250" x2="800" y2="250"/><line x1="0" y1="292" x2="800" y2="292"/><line x1="0" y1="334" x2="800" y2="334"/><line x1="0" y1="376" x2="800" y2="376"/><line x1="0" y1="418" x2="800" y2="418"/><line x1="0" y1="460" x2="800" y2="460"/>
+    <line x1="40" y1="0" x2="40" y2="500"/><line x1="94" y1="0" x2="94" y2="500"/><line x1="148" y1="0" x2="148" y2="500"/><line x1="202" y1="0" x2="202" y2="500"/><line x1="256" y1="0" x2="256" y2="500"/><line x1="310" y1="0" x2="310" y2="500"/><line x1="364" y1="0" x2="364" y2="500"/><line x1="418" y1="0" x2="418" y2="500"/><line x1="472" y1="0" x2="472" y2="500"/><line x1="526" y1="0" x2="526" y2="500"/><line x1="580" y1="0" x2="580" y2="500"/><line x1="634" y1="0" x2="634" y2="500"/><line x1="688" y1="0" x2="688" y2="500"/><line x1="742" y1="0" x2="742" y2="500"/><line x1="796" y1="0" x2="796" y2="500"/>
   </g>
-  <text x="56" y="170" font-family="Arial,sans-serif" font-size="132" font-weight="800" fill="url(#acc)" opacity="0.9">12</text>
-  <text x="56" y="280" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#f2fff5">Telegram bot yaratish</text>
-  <text x="56" y="318" font-family="Arial,sans-serif" font-size="16" fill="#9fc4ac">MAXSELLER / VIDEO</text>
-  <g transform="translate(56 366)">
-    <rect width="180" height="6" rx="3" fill="#ffffff" opacity="0.12"/>
-    <rect width="112" height="6" rx="3" fill="url(#acc)"/>
+  <path d="M0 430 Q 200 360 400 430 T 800 420" fill="none" stroke="#86efac" stroke-opacity=".25" stroke-width="2"/>
+  <g>
+    <rect x="56" y="44" width="126" height="32" rx="16" fill="#86efac" fill-opacity=".16" stroke="#86efac" stroke-opacity=".5"/>
+    <text x="119" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#eafff1">VIDEO</text>
+    <text x="52" y="176" font-family="Arial,sans-serif" font-size="118" font-weight="800" fill="url(#acc)" opacity=".85">12</text>
+    <text x="56" y="244" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#f3fff7">Telegram bot</text>
+    <text x="56" y="278" font-family="Arial,sans-serif" font-size="14" letter-spacing="2" fill="#9fc7ad">AVTOMATLASHTIRISH</text>
+    <rect x="56" y="320" width="188" height="6" rx="3" fill="#ffffff" opacity=".12"/>
+    <rect x="56" y="320" width="112" height="6" rx="3" fill="url(#acc)"/>
   </g>
+    
+  <g transform="translate(396 96) scale(1)" filter="url(#shadow)">
+    <rect width="348" height="264" rx="18" fill="#082016" stroke="#7dffb2" stroke-opacity=".25"/>
+    <path d="M0 18 A18 18 0 0 1 18 0 H330 A18 18 0 0 1 348 18 V46 H0 Z" fill="#0d2c1e"/>
+    <circle cx="22" cy="23" r="5" fill="#ff6b6b"/><circle cx="40" cy="23" r="5" fill="#ffd166"/><circle cx="58" cy="23" r="5" fill="#3ddc84"/>
+    <rect x="86" y="16" width="232" height="14" rx="7" fill="#ffffff" opacity=".08"/>
+    
+      <rect x="76" y="62" width="132" height="34" rx="12" fill="#22e05a" opacity=".22"/>
+      <rect x="92" y="76" width="100" height="8" rx="4" fill="#d9ffe8" opacity=".8"/>
+      <rect x="158" y="110" width="126" height="34" rx="12" fill="url(#glass)" stroke="#7dffb2" stroke-opacity=".25"/>
+      <rect x="174" y="124" width="94" height="8" rx="4" fill="#ffffff" opacity=".5"/>
+      <rect x="76" y="168" width="180" height="8" rx="4" fill="#ffffff" opacity=".3"/><rect x="76" y="190" width="140" height="8" rx="4" fill="#ffffff" opacity=".2"/>
+      <rect x="76" y="220" width="208" height="30" rx="8" fill="#06180f" stroke="#22e05a" stroke-opacity=".3"/>
+      <circle cx="94" cy="235" r="4" fill="#5ef2a0"/><rect x="108" y="232" width="120" height="8" rx="4" fill="#5ef2a0" opacity=".55"/>
+    
+  </g>
+    <g transform="translate(690 150)" filter="url(#shadow)">
+      <circle cx="46" cy="46" r="46" fill="#22e05a" opacity=".22"/>
+      <path d="M22 48 l48 -24 -14 48 -12 -18 z" fill="#5ef2a0"/>
+    </g>
+    <g transform="translate(438 376)" font-family="Arial,sans-serif" font-size="11" fill="#9fc7ad">
+      <text x="0" y="0">/start</text><text x="76" y="0">/catalog</text><text x="172" y="0">/order</text>
+    </g>
 </svg>

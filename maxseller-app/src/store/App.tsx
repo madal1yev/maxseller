@@ -9,6 +9,7 @@ import { loadCart, saveCart, type CartItem } from './cart'
 import Catalog from './Catalog'
 import OrderPage from './OrderPage'
 import ProductPage from './ProductPage'
+import Promo from './Promo'
 import { consumeIntended, currentPath, go, parseHash, rememberIntended, type Route } from './router'
 import { CategoryStrip, Features, Faq, Final, Footer, Hero, Nav, Steps } from './sections'
 import Success from './Success'
@@ -241,6 +242,7 @@ export default function App() {
         return (
           <>
             <Hero settings={settings} />
+            <Promo />
             <CategoryStrip onCategory={goCategory} />
             <Catalog
               products={data?.products ?? []}

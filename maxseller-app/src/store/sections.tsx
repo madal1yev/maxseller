@@ -64,6 +64,7 @@ export function Nav({ settings, user, cartCount, onCategory, onLogout }: NavProp
 
         <nav className={`nav-links${open ? ' open' : ''}`} id="navLinks" aria-label={t('nav.menu')}>
           <a href="#katalog" onClick={close}>{t('common.catalog')}</a>
+          <a href="#promo" onClick={close}>{t('nav.promo')}</a>
           <a href="#afzallik" onClick={close}>{t('nav.advantages')}</a>
           <a href="#qanday" onClick={close}>{t('nav.how')}</a>
           <a href="#savol" onClick={close}>{t('nav.faq')}</a>

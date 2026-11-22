@@ -1,25 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Ilmiy maqola yozish qo&apos;llanmasi">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Maqola">
+
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#050f0a"/><stop offset="1" stop-color="#251540"/>
+      <stop offset="0" stop-color="#04120c"/><stop offset="1" stop-color="#0a3a26"/>
     </linearGradient>
     <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22e05a"/>
+      <stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#5ef2a0"/>
     </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity=".02"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="34"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+    </filter>
   </defs>
   <rect width="800" height="500" fill="url(#bg)"/>
-  <circle cx="680" cy="90" r="190" fill="#8b5cf6" opacity="0.10"/>
-  <circle cx="120" cy="440" r="150" fill="#22e05a" opacity="0.06"/>
-  <path d="M0 400 Q 200 330 400 400 T 800 390" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.25"/>
-  <g transform="translate(56 52)">
-    <rect width="82" height="34" rx="16" fill="#8b5cf6" opacity="0.18" stroke="#8b5cf6" stroke-opacity="0.5"/>
-    <text x="41" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">PDF</text>
+  <circle cx="690" cy="70" r="220" fill="#16a34a" opacity=".16" filter="url(#blur)"/>
+  <circle cx="120" cy="470" r="180" fill="#22e05a" opacity=".08" filter="url(#blur)"/>
+  <g stroke="#7dffb2" stroke-opacity=".07" stroke-width="1">
+    <line x1="0" y1="40" x2="800" y2="40"/><line x1="0" y1="82" x2="800" y2="82"/><line x1="0" y1="124" x2="800" y2="124"/><line x1="0" y1="166" x2="800" y2="166"/><line x1="0" y1="208" x2="800" y2="208"/><line x1="0" y1="250" x2="800" y2="250"/><line x1="0" y1="292" x2="800" y2="292"/><line x1="0" y1="334" x2="800" y2="334"/><line x1="0" y1="376" x2="800" y2="376"/><line x1="0" y1="418" x2="800" y2="418"/><line x1="0" y1="460" x2="800" y2="460"/>
+    <line x1="40" y1="0" x2="40" y2="500"/><line x1="94" y1="0" x2="94" y2="500"/><line x1="148" y1="0" x2="148" y2="500"/><line x1="202" y1="0" x2="202" y2="500"/><line x1="256" y1="0" x2="256" y2="500"/><line x1="310" y1="0" x2="310" y2="500"/><line x1="364" y1="0" x2="364" y2="500"/><line x1="418" y1="0" x2="418" y2="500"/><line x1="472" y1="0" x2="472" y2="500"/><line x1="526" y1="0" x2="526" y2="500"/><line x1="580" y1="0" x2="580" y2="500"/><line x1="634" y1="0" x2="634" y2="500"/><line x1="688" y1="0" x2="688" y2="500"/><line x1="742" y1="0" x2="742" y2="500"/><line x1="796" y1="0" x2="796" y2="500"/>
   </g>
-  <text x="56" y="170" font-family="Arial,sans-serif" font-size="132" font-weight="800" fill="url(#acc)" opacity="0.9">09</text>
-  <text x="56" y="280" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#f2fff5">Ilmiy maqola yozish qo&apos;l</text>
-  <text x="56" y="318" font-family="Arial,sans-serif" font-size="16" fill="#9fc4ac">MAXSELLER / DOCS</text>
-  <g transform="translate(56 366)">
-    <rect width="180" height="6" rx="3" fill="#ffffff" opacity="0.12"/>
-    <rect width="112" height="6" rx="3" fill="url(#acc)"/>
+  <path d="M0 430 Q 200 360 400 430 T 800 420" fill="none" stroke="#16a34a" stroke-opacity=".25" stroke-width="2"/>
+  <g>
+    <rect x="56" y="44" width="126" height="32" rx="16" fill="#16a34a" fill-opacity=".16" stroke="#16a34a" stroke-opacity=".5"/>
+    <text x="119" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#eafff1">HUJJAT</text>
+    <text x="52" y="176" font-family="Arial,sans-serif" font-size="118" font-weight="800" fill="url(#acc)" opacity=".85">09</text>
+    <text x="56" y="244" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#f3fff7">Maqola</text>
+    <text x="56" y="278" font-family="Arial,sans-serif" font-size="14" letter-spacing="2" fill="#9fc7ad">PDF QOLLANMA</text>
+    <rect x="56" y="320" width="188" height="6" rx="3" fill="#ffffff" opacity=".12"/>
+    <rect x="56" y="320" width="112" height="6" rx="3" fill="url(#acc)"/>
   </g>
+    <g transform="translate(404 100)" filter="url(#shadow)">
+      <rect width="150" height="250" rx="12" fill="#0a2c1e" stroke="#5ef2a0" stroke-opacity=".45"/>
+      <rect x="18" y="24" width="114" height="52" rx="8" fill="url(#acc)" opacity=".8"/>
+      <rect x="18" y="100" width="104" height="8" rx="4" fill="#ffffff" opacity=".5"/><rect x="18" y="122" width="84" height="8" rx="4" fill="#ffffff" opacity=".28"/>
+      <rect x="18" y="158" width="110" height="8" rx="4" fill="#ffffff" opacity=".3"/><rect x="18" y="176" width="86" height="8" rx="4" fill="#ffffff" opacity=".3"/><rect x="18" y="194" width="110" height="8" rx="4" fill="#ffffff" opacity=".3"/><rect x="18" y="212" width="86" height="8" rx="4" fill="#ffffff" opacity=".3"/><rect x="18" y="230" width="110" height="8" rx="4" fill="#ffffff" opacity=".3"/>
+    </g>
+    <g transform="translate(570 118)" filter="url(#shadow)">
+      <rect width="212" height="250" rx="12" fill="#f4fff8" opacity=".95"/>
+      <rect x="26" y="34" width="130" height="8" rx="4" fill="#0a3a26" opacity=".75"/>
+      <rect x="26" y="66" width="160" height="12" rx="4" fill="#0a3a26" opacity=".16"/><rect x="26" y="66" width="70" height="12" rx="4" fill="#5ef2a0" opacity=".55"/><rect x="26" y="100" width="160" height="12" rx="4" fill="#0a3a26" opacity=".16"/><rect x="26" y="100" width="88" height="12" rx="4" fill="#5ef2a0" opacity=".55"/><rect x="26" y="134" width="160" height="12" rx="4" fill="#0a3a26" opacity=".16"/><rect x="26" y="134" width="106" height="12" rx="4" fill="#5ef2a0" opacity=".55"/><rect x="26" y="168" width="160" height="12" rx="4" fill="#0a3a26" opacity=".16"/><rect x="26" y="168" width="124" height="12" rx="4" fill="#5ef2a0" opacity=".55"/>
+      <rect x="26" y="210" width="120" height="8" rx="4" fill="#0a3a26" opacity=".35"/>
+    </g>
+    <circle cx="742" cy="120" r="28" fill="#22e05a" opacity=".2"/><path d="M730 120 l9 9 16 -20" stroke="#5ef2a0" stroke-width="4" fill="none"/>
 </svg>
