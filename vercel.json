@@ -4,6 +4,7 @@
   "outputDirectory": "maxseller-app/dist",
   "framework": null,
   "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/api/:path*", "destination": "/api/index?path=/api/:path*" }
   ]
 }
