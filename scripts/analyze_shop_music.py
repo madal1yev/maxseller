@@ -9,7 +9,7 @@ TEMP = os.environ.get('TEMP', '.')
 SRC = os.path.join(TEMP, 'maxseller-shop-ad', 'skriptonit.wav')
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    '.tmp', 'shop-music-map.json')
-DURATION_CUT = 30.0
+DURATION_CUT = float(os.environ.get('CUT_SECONDS', '30.0'))
 
 with wave.open(SRC, 'rb') as w:
     sr = w.getframerate()

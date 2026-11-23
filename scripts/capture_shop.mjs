@@ -108,7 +108,9 @@ async function shot(name, hash, scrollId) {
   await sleep(1500)
   if (scrollId) {
     await send('Runtime.evaluate', {
-      expression: `(()=>{const e=document.getElementById(${JSON.stringify(scrollId)});if(e)e.scrollIntoView({block:'start',behavior:'instant'});})()`,
+      expression: `(()=>{const e=${scrollId.startsWith('.') || scrollId.startsWith('section') || scrollId.startsWith('#')
+        ? `document.querySelector(${JSON.stringify(scrollId)})`
+        : `document.getElementById(${JSON.stringify(scrollId)})`};if(e)e.scrollIntoView({block:'start',behavior:'instant'});})()`,
     })
     await sleep(700)
   }
@@ -121,7 +123,7 @@ async function shot(name, hash, scrollId) {
 }
 
 await shot('shop-hero', '/', 'top')
-await shot('shop-categories', '/', 'katalog')
+await shot('shop-categories', '/', 'section.cats')
 await shot('shop-catalog', '/catalog', 'katalog')
 await shot('shop-product-1', '/product/1')
 await shot('shop-product-10', '/product/10')
